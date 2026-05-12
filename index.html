@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tata Usaha</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <h2>TATA USAHA</h2>
+
+  <button onclick="showMenu('suratMasuk')">
+    Surat Masuk
+  </button>
+
+  <button onclick="showMenu('suratKeluar')">
+    Surat Keluar
+    </button>
+
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- SURAT MASUK -->
+  <div id="suratMasuk" class="menu active">
+
+    <h2>Surat Masuk</h2>
+
+    <form
+      action="https://script.google.com/macros/s/AKfycbxwgpJvqTxHNt0YtKtNO2cUOzIc4K_e3191LJ45SPFyk7I5cXdD2OaQXloJ7p7mwl7u/exec"
+      method="POST"
+      target="_blank"
+    >
+
+      <input type="hidden" name="jenis" value="Surat Masuk">
+
+      <input
+        type="text"
+        name="nomor"
+        placeholder="Nomor Surat"
+        required>
+
+      <input
+        type="date"
+        name="tanggal"
+        required>
+
+      <input
+        type="text"
+        name="pengirim"
+        placeholder="Pengirim"
+        required>
+
+      <textarea
+        name="perihal"
+        placeholder="Perihal"
+        required></textarea>
+
+      <input
+        type="text"
+        name="file"
+        placeholder="Link Google Drive / PDF">
+
+      <button type="submit">
+        Simpan
+      </button>
+
+    </form>
+
+    <hr>
+
+    <h3>Data Surat Masuk</h3>
+
+    <iframe
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSbp6JbKm0WrJbdPyORj2_tTbdP00CIzUU7V3j_jB_uj0AOGgzRDPCtR-66tkiwrlMX8vX4Rd8PtDug/pubhtml?gid=0&single=true"
+      class="frame">
+    </iframe>
+
+  </div>
+
+  <!-- SURAT KELUAR -->
+  <div id="suratKeluar" class="menu">
+
+    <h2>Surat Keluar</h2>
+
+    <form
+      action="https://script.google.com/macros/s/AKfycbw_FhBuXDyW93Aln0YwRqcd2Gw9R0kVzlolwfYMSZuC_pqg3EU86Bj5KKT-D6rkUw/exec"
+      method="POST"
+      target="_blank"
+    >
+
+      <input type="hidden" name="jenis" value="Surat Keluar">
+
+      <input
+        type="text"
+        name="nomor"
+        placeholder="Nomor Surat"
+        required>
+
+      <input
+        type="date"
+        name="tanggal"
+        required>
+
+      <input
+        type="text"
+        name="pengirim"
+        placeholder="Tujuan"
+        required>
+
+      <textarea
+        name="perihal"
+        placeholder="Perihal"
+        required></textarea>
+
+      <input
+        type="text"
+        name="file"
+        placeholder="Link Google Drive / PDF">
+
+      <button type="submit">
+        Simpan
+      </button>
+
+    </form>
+
+    <hr>
+
+    <h3>Data Surat Keluar</h3>
+
+    <iframe
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTCSMti5VGBTNmGhVoqaegmbuZn3VWiaQDENsJhhjhIs57i4ZKaRFLP1AHfADHoQSAY62JcisKnRjPg/pubhtml?gid=0&single=true"
+      class="frame">
+    </iframe>
+
+  </div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
