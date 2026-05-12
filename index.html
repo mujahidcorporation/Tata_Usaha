@@ -14,8 +14,19 @@
 
 <!-- SIDEBAR -->
 <div class="sidebar">
+<div class="logo-area">
+
+  <img
+    src="img/CORPORSTION.png"
+    alt="Logo"
+    class="logo">
 
   <h2>TATA USAHA</h2>
+
+</div>
+  <button onclick="showMenu('portofolio')">
+  Portofolio
+</button>
 
   <button onclick="showMenu('suratMasuk')">
     Surat Masuk
@@ -26,9 +37,38 @@
     </button>
 
 </div>
-
 <!-- CONTENT -->
+
 <div class="content">
+
+  <!-- PORTOFOLIO -->
+<div id="portofolio" class="menu">
+
+  <div class="sambutan-box">
+
+    <img
+      src="img/CORPORSTION.png"
+      alt="Logo"
+      class="sambutan-logo">
+
+    <h3>Selamat Datang</h3>
+
+    <p>
+      Selamat datang di sistem Tata Usaha SDIT Daarul Hasanah.
+      Website ini dibuat untuk mempermudah
+      pengelolaan surat masuk dan surat keluar
+      secara digital, cepat, dan efisien.
+    </p>
+
+    <p>
+      Semoga website ini dapat membantu
+      pelayanan administrasi menjadi lebih
+      baik dan modern.
+    </p>
+
+  </div>
+
+</div>
 
   <!-- SURAT MASUK -->
   <div id="suratMasuk" class="menu active">
@@ -79,7 +119,8 @@
     <hr>
 
     <h3>Data Surat Masuk</h3>
-
+    <a href="https://docs.google.com/spreadsheets/d/1X7WleZuESHtsTOQZvYGXWGQ0oXBjzF3jItsscfPdADA/export?format=xlsx"
+       target="_blank" class="download-btn"> Download Excel</a>
     <iframe
       src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSbp6JbKm0WrJbdPyORj2_tTbdP00CIzUU7V3j_jB_uj0AOGgzRDPCtR-66tkiwrlMX8vX4Rd8PtDug/pubhtml?gid=0&single=true"
       class="frame">
@@ -136,6 +177,8 @@
     <hr>
 
     <h3>Data Surat Keluar</h3>
+    <a href="https://docs.google.com/spreadsheets/d/19QzDSHXKjUV_58QZJauzqgDQj8uBEhwGGVxWh8fDVbA/export?format=xlsx" target="_blank" class="download-btn">
+  Download Excel </a>
 
     <iframe
       src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTCSMti5VGBTNmGhVoqaegmbuZn3VWiaQDENsJhhjhIs57i4ZKaRFLP1AHfADHoQSAY62JcisKnRjPg/pubhtml?gid=0&single=true"
