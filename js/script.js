@@ -13,7 +13,7 @@ let editType = "suratMasuk";
    URL APPS SCRIPT
 ========================= */
 
-const API_URL = "https://script.google.com/macros/s/AKfycbxwgpJvqTxHNt0YtKtNO2cUOzIc4K_e3191LJ45SPFyk7I5cXdD2OaQXloJ7p7mwl7u/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbznt3QrrrQWnCNHfEHfQa_Pil7tGP1LMwA91CVRr5OPefhxkZjNBZPMcYiXOUO_8Mjz/exec";
 
 
 /* =========================
