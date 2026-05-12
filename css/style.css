@@ -162,3 +162,18 @@ body{
 .download-btn:hover{
   background:#1b5e20;
 }
+
+.admin-btn{
+  display:inline-block;
+  margin-bottom:15px;
+  margin-right:10px;
+  padding:10px 15px;
+  background:#f59e0b;
+  color:white;
+  text-decoration:none;
+  border-radius:5px;
+}
+
+.admin-btn:hover{
+  background:#d97706;
+}
