@@ -1,19 +1,7 @@
-/* =========================
-   DATABASE ARRAY
-========================= */
+const API_URL = "https://script.google.com/macros/s/AKfycbznt3QrrrQWnCNHfEHfQa_Pil7tGP1LMwA91CVRr5OPefhxkZjNBZPMcYiXOUO_8Mjz/exec";
 
 let masuk = [];
 let keluar = [];
-
-let editIndex = null;
-let editType = "suratMasuk";
-
-
-/* =========================
-   URL APPS SCRIPT
-========================= */
-
-const API_URL = "https://script.google.com/macros/s/AKfycbznt3QrrrQWnCNHfEHfQa_Pil7tGP1LMwA91CVRr5OPefhxkZjNBZPMcYiXOUO_8Mjz/exec";
 
 
 /* =========================
@@ -21,8 +9,6 @@ const API_URL = "https://script.google.com/macros/s/AKfycbznt3QrrrQWnCNHfEHfQa_P
 ========================= */
 
 function showMenu(id) {
-
-  editType = id;
 
   document.querySelectorAll('.menu')
     .forEach(menu => menu.classList.remove('active'));
@@ -44,24 +30,29 @@ async function simpanData() {
 
   if (!nomor || !perihal || !file) {
 
-    alert("Lengkapi semua data!");
+    alert("Lengkapi data");
     return;
   }
 
+  const jenis = document
+    .getElementById("suratMasuk")
+    .classList.contains("active")
+
+    ? "masuk"
+    : "keluar";
+
+
   const data = {
-
-    jenis: editType === "suratMasuk"
-      ? "masuk"
-      : "keluar",
-
-    nomor: nomor,
-    perihal: perihal,
-    file: file
+    jenis,
+    nomor,
+    perihal,
+    file
   };
 
   try {
 
     await fetch(API_URL, {
+
       method: "POST",
 
       headers: {
@@ -77,52 +68,12 @@ async function simpanData() {
 
     loadData();
 
-  } catch (error) {
+  } catch(err) {
 
-    console.log(error);
+    console.log(err);
 
-    alert("Gagal menyimpan data");
+    alert("Gagal simpan data");
   }
-}
-
-
-/* =========================
-   EDIT DATA
-========================= */
-
-function editData(type, index) {
-
-  editType = type;
-  editIndex = index;
-
-  const data = type === "suratMasuk"
-    ? masuk[index]
-    : keluar[index];
-
-  document.getElementById('noInput').value = data.nomor;
-  document.getElementById('perihalInput').value = data.perihal;
-  document.getElementById('fileInput').value = data.file;
-}
-
-
-/* =========================
-   HAPUS DATA
-========================= */
-
-function hapusData(type, index) {
-
-  if (!confirm("Hapus data?")) return;
-
-  if (type === "suratMasuk") {
-
-    masuk.splice(index, 1);
-
-  } else {
-
-    keluar.splice(index, 1);
-  }
-
-  render();
 }
 
 
@@ -135,83 +86,6 @@ function reset() {
   document.getElementById('noInput').value = "";
   document.getElementById('perihalInput').value = "";
   document.getElementById('fileInput').value = "";
-
-  editIndex = null;
-}
-
-
-/* =========================
-   RENDER TABEL
-========================= */
-
-function render() {
-
-  /* ================= MASUK ================= */
-
-  let htmlMasuk = "";
-
-  masuk.forEach((s, i) => {
-
-    htmlMasuk += `
-      <tr>
-        <td>${s.nomor}</td>
-        <td>${s.perihal}</td>
-
-        <td>
-          <a href="${s.file}" target="_blank">
-            Lihat
-          </a>
-        </td>
-
-        <td>
-          <button onclick="editData('suratMasuk', ${i})">
-            Edit
-          </button>
-
-          <button onclick="hapusData('suratMasuk', ${i})">
-            Hapus
-          </button>
-        </td>
-      </tr>
-    `;
-  });
-
-  document.getElementById("suratMasukTable")
-    .innerHTML = htmlMasuk;
-
-
-  /* ================= KELUAR ================= */
-
-  let htmlKeluar = "";
-
-  keluar.forEach((s, i) => {
-
-    htmlKeluar += `
-      <tr>
-        <td>${s.nomor}</td>
-        <td>${s.perihal}</td>
-
-        <td>
-          <a href="${s.file}" target="_blank">
-            Lihat
-          </a>
-        </td>
-
-        <td>
-          <button onclick="editData('suratKeluar', ${i})">
-            Edit
-          </button>
-
-          <button onclick="hapusData('suratKeluar', ${i})">
-            Hapus
-          </button>
-        </td>
-      </tr>
-    `;
-  });
-
-  document.getElementById("suratKeluarTable")
-    .innerHTML = htmlKeluar;
 }
 
 
@@ -227,18 +101,70 @@ async function loadData() {
 
     const data = await response.json();
 
-    masuk = data.filter(item => item.jenis === "masuk");
+    masuk = data.filter(d => d.jenis === "masuk");
 
-    keluar = data.filter(item => item.jenis === "keluar");
+    keluar = data.filter(d => d.jenis === "keluar");
 
     render();
 
-  } catch (error) {
+  } catch(err) {
 
-    console.log(error);
+    console.log(err);
 
     alert("Gagal mengambil data");
   }
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function render() {
+
+  let htmlMasuk = "";
+
+  masuk.forEach((s) => {
+
+    htmlMasuk += `
+      <tr>
+        <td>${s.nomor}</td>
+        <td>${s.perihal}</td>
+
+        <td>
+          <a href="${s.file}" target="_blank">
+            Lihat
+          </a>
+        </td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("suratMasukTable")
+    .innerHTML = htmlMasuk;
+
+
+
+  let htmlKeluar = "";
+
+  keluar.forEach((s) => {
+
+    htmlKeluar += `
+      <tr>
+        <td>${s.nomor}</td>
+        <td>${s.perihal}</td>
+
+        <td>
+          <a href="${s.file}" target="_blank">
+            Lihat
+          </a>
+        </td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("suratKeluarTable")
+    .innerHTML = htmlKeluar;
 }
 
 
