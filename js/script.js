@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbznt3QrrrQWnCNHfEHfQa_Pil7tGP1LMwA91CVRr5OPefhxkZjNBZPMcYiXOUO_8Mjz/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwb5nsetrkS-o_gh8U_0e5PUVOgS02VeU0McnYXc3HF1fV_SvyV-o-xS6W1QyAVAJQ/exec";
 
 let masuk = [];
 let keluar = [];
