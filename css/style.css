@@ -177,3 +177,12 @@ body{
 .admin-btn:hover{
   background:#d97706;
 }
+
+.search-box{
+  width:100%;
+  padding:10px;
+  margin-bottom:15px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:14px;
+}
